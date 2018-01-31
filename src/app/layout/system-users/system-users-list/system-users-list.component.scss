@@ -1,0 +1,237 @@
+/***************( Table )******************/
+#teste{
+  margin-left: 50px;
+}
+table {
+  margin: -15px 0 30px 0;
+  width: 100%;
+  font-size: 13px;
+  display: table;
+}
+
+th {
+  height: 40px;
+  font-size: 14px;
+  color: #fff;
+  border-bottom: 3px solid #fff;
+  padding-left: 5px;
+  background-color: #18638c;
+}
+
+
+td {
+  height: 35px;
+  color: rgb(80, 80, 80);
+  border-bottom: 2px solid #3886af;
+  padding-left: 5px;
+  background-color: rgba(0,0,0,0);
+}
+
+
+#ultimo {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  text-align: center;
+}
+
+#primeiro{
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+
+  .linha{
+    width: 100%;
+    border: 1px solid rgb(230, 17, 17);
+    margin-left: 10px;
+  }
+
+
+  .visu{
+    font-size: 3em;
+    color: white;
+  }
+  hr{
+    color: rgb(80, 80, 80);
+    border-bottom: 2px solid #3886af;
+    padding-left: 5px;
+    background-color: rgba(0,0,0,0);
+  }
+
+.col-form-label{
+    font-size: 14px;
+    margin-left: 1%;
+    font-weight: bold;
+}
+ #name{
+  width: 98%;
+  margin-left: 1%;
+ }
+  .form-control-plaintext{
+    width: 70%;
+    margin-left: 1%;
+    text-align: justify;
+  }
+
+  #complementR, #complementC{
+    margin-left: 45%;
+  }
+
+  #numberR, #numberC{
+    margin-left: 20%;
+  }
+ 
+  #phoneComercial, #phoneRecado, #streetR, #stateR, #cityR, #cityC, #streetC, #stateC{
+    margin-left: 10%;
+  }
+
+ 
+.title{
+    text-align: center;
+    color: #fff;
+    border-bottom: 3px solid #fff;
+    padding-left: 5px;
+    background-color: #18638c;
+    border-radius: 10px;
+}
+
+
+#excessao {
+    border-right: none;
+    text-align: center;
+}
+
+#teste{
+  height: 200%;
+}
+
+
+  #warning, #danger {
+    width: 42px;
+    height: 41px;
+    color: #fff;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+  }
+  .fa{
+    font-size: 1.5em;
+  }
+
+  #warning{
+    margin-right: 10px;
+    background-color: #3886af;
+  }
+
+  #warning:hover{
+    background-color: #44ABDF;
+  }
+
+
+  #danger{
+    background-color: #3886af;
+  }
+
+  #danger:hover{
+    background-color: #44ABDF;
+  }
+
+  /**************( Pagination )**************/
+ 
+  ul{
+    position: relative;
+    margin: auto;
+    float: left; 
+  }
+
+  #qtdForPage
+  {
+    position: relative;
+    margin: auto;
+    float: right; 
+  }
+#cardPagination{
+  background-color: white;
+  margin-top: -25px;
+  border: 0;
+  
+  .card-body{
+    margin: -15px;
+    
+  }
+
+.page-link{
+  color:#18638c;
+  font-size: 1.1rem;
+}
+  .selectpicker{
+    height: calc(2.1rem + 2px);
+    padding:0.1rem;
+  }
+}
+  #pagination{
+    background-color: grey;
+  }
+/*---------------------------------------------------------------------*/
+
+#containerBotoes{
+  .btn{
+  background-color: #18638c;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  }
+}
+
+
+#confirmar{
+  background-color: #3886af;
+}
+
+#cancelar{
+  background-color: #3886af;
+}
+
+
+#containerVisualization{
+ text-align: center;
+ align-content: center;
+}
+
+
+//
+
+.testimonial-card{
+
+  .label{
+    font-weight: bold;
+  }
+  .form-control-sm{
+
+    margin-top: -5px;
+  }
+
+  .row-adicionais{
+    margin-top: -5px;
+  }
+
+  hr{
+    height: -20px;
+  }
+
+  .col{
+
+    margin: 5px;
+  }
+}
+#containerHeader{
+  height: 50px;
+  background-color: blue;
+
+  app-page-header{
+    width: 10px;
+  }
+}

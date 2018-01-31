@@ -1,0 +1,21 @@
+// shared css for the login and signup page
+@import "../login/login.component.scss";
+
+
+input{
+    width: 90%;
+}
+
+.fa-check, .fa-times {
+    position: relative;
+    float: right;
+    margin-top: -21px;
+    margin-right: 9px;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    font-size: 20px;
+    border-radius: 100%;
+    color: #fff;
+    border: 2px solid #fff;       
+}

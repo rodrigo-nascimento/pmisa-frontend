@@ -1,0 +1,286 @@
+<div class="row mt-3">
+    <div class="col-sm-6">
+        <form novalidate [formGroup]="formEditUser" (ngSubmit)="onSubmitEditUser()">
+            <div class="form-content">
+                <div class="card">
+                    <div class="card-header">EDITAR DADOS DO USUÁRIO
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+
+                            <div class="form-group">
+
+                                <label for="name">Nome Completo</label>
+                                <input type="text" class="form-control input-underline input-sm inputName" placeholder="Seu nome" formControlName="name">
+
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-5">
+                                    <label class="col-form-label">CPF:</label>
+
+                                    <input type="text" class="form-control input-underline input-sm inputCPF" placeholder="CPF" ng-model="cpf" formControlName="cpf"
+                                        (blur)="validaAtributos('cpf')" mask='000.000.000-00'>
+                                </div>
+
+                                <div class="form-group col-md-5">
+                                    <label class="col-form-label">RG:</label>
+
+                                    <input type="text" class="form-control input-underline input-sm inputRG" placeholder="RG" ng-model="rg" formControlName="rg">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-form-label">E-mail:</label>
+
+                                <input type="email" class="form-control input-underline input-sm inputEmail" placeholder="name@example.com" formControlName="email">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <ngb-tabset>
+                            <ngb-tab title="Endereço Residencial">
+                                <ng-template ngbTabContent>
+                                    <br>
+
+                                    <div class="form-row">
+
+                                        <div class="form-group input-group col-md-11">
+
+                                            <input type="text" class="form-control input-underline input-sm" placeholder="CEP" mask='00000-000' formControlName="zip_codeR">
+
+                                            <span class="input-group-btn">
+
+                                                <button type="button" class="btn {{classButtonEndR}}" id="btnBuscaCepR" (click)="buscaCep('btnBuscaCepR')" #btnEndR>
+
+                                                    <i id="iconBusca" class="fa" [class.fa-search]="btnEndR.className
+=='btn btn-primary'" [class.fa-times]="btnEndR.className
+=='btn btn-danger'"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div formGroupName="enderecoResidencial">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-7">
+
+                                                <input type="text" class="form-control input-underline input-sm inputStreetR" placeholder="Logradouro" formControlName="streetR">
+
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+
+                                                <input type="text" class="form-control input-underline input-sm inputNumberR" placeholder="Nº" formControlName="numberR"
+                                                    ng-model="numberR">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-5">
+
+                                                <input type="text" class="form-control input-underline input-sm inputNeighborhoodR" placeholder="Bairro" ng-model="neighborhoodR"
+                                                    formControlName="neighborhoodR">
+
+                                            </div>
+
+                                            <div class="form-group col-md-5">
+
+                                                <input type="text" class="form-control input-underline input-sm inputComplementR" placeholder="Complemento" ng-model="complementR"
+                                                    formControlName="complementR">
+
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-5">
+
+                                                <input type="text" class="form-control input-underline input-sm inputCityR" placeholder="Cidade" ng-model="cityR" formControlName="cityR"
+                                                    readonly>
+
+                                            </div>
+
+                                            <div class="form-group col-md-5">
+
+                                                <input type="text" class="form-control input-underline input-sm inputStateR" placeholder="Estado" ng-model="stateR" formControlName="stateR"
+                                                    readonly>
+
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                </ng-template>
+
+                            </ngb-tab>
+
+
+
+                            <ngb-tab title="Endereço Comercial">
+
+                                <ng-template ngbTabContent>
+
+                                    <br>
+
+                                    <div class="form-row">
+
+                                        <div class="form-group input-group col-md-11">
+
+                                            <input type="text" class="form-control input-underline input-sm" placeholder="CEP" mask='00000-000' ng-model="zip_codeC"
+                                                formControlName="zip_codeC">
+
+                                            <span class="input-group-btn">
+
+                                                <button type="button" class="btn {{classButtonEndC}}" id="btnBuscaCepC" title="Buscar CEP" (click)="buscaCep('btnBuscaCepC')"
+                                                    #btnEndC>
+
+                                                    <i id="iconBusca" class="fa" [class.fa-search]="btnEndC.className
+=='btn btn-primary'" [class.fa-times]="btnEndC.className
+=='btn btn-danger'"></i>
+
+                                                </button>
+
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div formGroupName="enderecoComercial">
+
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-7">
+
+                                                <input type="text" class="form-control input-underline input-sm inputStreetC" placeholder="Logradouro" formControlName="streetC">
+
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+
+                                                <input type="text" class="form-control input-underline input-sm inputNumberC" placeholder="Nº" formControlName="numberC"
+                                                    ng-model="numberC">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-5">
+
+                                                <input type="text" class="form-control input-underline input-sm inputNeighborhoodC" placeholder="Bairro" ng-model="neighborhoodC"
+                                                    formControlName="neighborhoodC">
+
+                                            </div>
+
+                                            <div class="form-group col-md-5">
+
+                                                <input type="text" class="form-control input-underline input-sm inputComplementC" placeholder="Complemento" ng-model="complementC"
+                                                    formControlName="complementC">
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-5">
+
+                                                <input type="text" class="form-control input-underline input-sm inputCityC" placeholder="Cidade" ng-model="cityC" formControlName="cityC"
+                                                    readonly>
+
+                                            </div>
+
+                                            <div class="form-group col-md-5">
+
+                                                <input type="text" class="form-control input-underline input-sm inputStateC" placeholder="Estado" ng-model="stateC" formControlName="stateC"
+                                                    readonly>
+
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                </ng-template>
+
+                            </ngb-tab>
+
+                            <ngb-tab title="Contatos">
+
+                                <ng-template ngbTabContent>
+                                    <br>
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-9">
+
+                                            <input type="text" class="form-control input-underline input-sm inputPhoneR" placeholder="Telefone Residencial" ng-model="phoneResidencial"
+                                                formControlName="phoneResidencial" mask='(00)0000-0000'>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-9">
+
+                                            <input type="text" class="form-control input-underline input-sm inputPhoneCelular" placeholder="Telefone Celular" ng-model="phoneCel"
+                                                formControlName="phoneCel" mask='(00)90000-0000'>
+
+                                        </div>
+
+                                        <br>
+                                    </div>
+
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-9">
+
+                                            <input type="text" class="form-control input-underline input-sm inputPhoneRecado" placeholder="Telefone Recado" ng-model="phoneRecado"
+                                                formControlName="phoneRecado" mask='(00)90000-0000'>
+
+                                        </div>
+
+                                    </div>
+
+                                </ng-template>
+
+                            </ngb-tab>
+
+                        </ngb-tabset>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br>
+            <div class="row" style="float:right;margin-top:10px">
+                <button type="submit" class="btn btn-primary" title="Salvar dados" [disabled]="(!formEditUser.valid)">Salvar</button>
+            </div>
+        </form>
+        <br>
+
+
+    </div>
+
+</div>

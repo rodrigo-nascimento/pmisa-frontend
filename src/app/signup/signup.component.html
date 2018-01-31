@@ -1,0 +1,69 @@
+
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img class="user-avatar" src="assets/images/logo_pmisa.png" width="150px" />
+            <h4>Faça seu Cadastro</h4>
+            <form role="form" novalidade [formGroup]="registerForm" (ngSubmit)="registerUsers()">
+                <div class="form-content">
+                    <div class="alert alert-danger" role="alert" *ngIf="errorRegister">
+                        Usuário já existe em nosso Cadastro!
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-sm" placeholder="Nome Completo" formControlName="name">
+                        
+                        <small *ngIf="registerForm.get('name').valid && registerForm.get('name').touched" class="form-text text-success"> <i class="fa fa-check" aria-hidden="true"></i> </small>
+                        <small *ngIf="!registerForm.get('name').valid && registerForm.get('name').touched" class="form-text text-danger errado"> <i class="fa fa-times" aria-hidden="true"></i> </small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-sm" placeholder="CPF" formControlName="cpf" (blur)="validaAtributos('cpf')">
+
+                        <small *ngIf="registerForm.get('cpf').valid && registerForm.get('cpf').touched" class="form-text text-success"> <i class="fa fa-check" aria-hidden="true"></i> </small>
+                        <small *ngIf="!registerForm.get('cpf').valid && registerForm.get('cpf').touched" class="form-text text-danger"> <i class="fa fa-times" aria-hidden="true"></i> </small>    
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-sm" placeholder="E-mail" formControlName="email" (blur)="validaAtributos('email')">
+
+                        <small *ngIf="registerForm.get('email').valid && registerForm.get('email').touched" class="form-text text-success"> <i class="fa fa-check" aria-hidden="true"></i> </small>
+                        <small *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched" class="form-text text-danger"> <i class="fa fa-times" aria-hidden="true"></i> </small>                            
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-sm" placeholder="Senha" formControlName="password">
+
+                        <small *ngIf="registerForm.get('password').valid && registerForm.get('password').touched" class="form-text text-success"> <i class="fa fa-check" aria-hidden="true"></i> </small>
+                        <small *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched" class="form-text text-danger"> <i class="fa fa-times" aria-hidden="true"></i> <br> a senha precisar ter: uma letra maiúscula, uma letra minúscula, um número, uma caractere especial(@#$%) e tamanho entre 6-16 </small>    
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-sm" placeholder="Confirme a senha" formControlName="confirmPassword">
+                        
+                        <small *ngIf="registerForm.get('confirmPassword').valid && registerForm.get('confirmPassword').touched" class="form-text text-success"> <i class="fa fa-check" aria-hidden="true"></i> </small>
+                        <small *ngIf="!registerForm.get('confirmPassword').valid && registerForm.get('confirmPassword').touched" class="form-text text-danger"> <i class="fa fa-times" aria-hidden="true"></i> </small>
+                        
+                    </div>
+                </div>
+                <a>
+                    <button type="submit" class="btn btn-primary btn-lg"> Cadastrar </button>
+                </a>
+
+                &nbsp;
+                <a>
+                    <button type="button" class="btn btn-primary btn-lg" (click)="loginUser()"> Retornar </button>
+                </a>
+            </form>
+        </div>
+
+    </div>
+    <div class="row">
+        <br>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="alert alert-dark" role="alert">
+            Seus dados não serão compartilhados com outros sites e só serão divulgados e utilizados, quando for necessário, para a realização
+            dos nossos serviços.
+        </div>
+    </div>
+</div>

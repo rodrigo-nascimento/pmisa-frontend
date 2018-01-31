@@ -1,0 +1,103 @@
+.btn-primary{
+  background-color: #18638c;
+}
+.card{
+    width: 205%;
+  }
+
+  .card-header{
+    background-color: #18638c;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  .form-group{
+    width: 98%;
+    margin-left: 1%;
+    margin-top: 1%;
+  }
+
+  .form-row{
+    margin-top: 1%;
+    margin-left: 1%;
+  }
+
+  #btnBuscaCepR{
+    width: 100%;
+  }
+
+  #btnBuscaCepC{
+    width: 100%;
+  }
+
+  .form-groupCont{
+    width: 70%;
+    
+  }
+
+  #inputCpf{
+    margin-left: -3%;
+  }
+
+  .inputNumberR, .inputNumberC{
+    width: 40%;
+    margin-left: 57%;
+  }
+
+  .inputStreetR, .inputStreetC{
+    width: 134%;
+  }
+
+  .inputStateR, .inputStateC{
+    width: 20%;
+    margin-left: 99%;
+  }
+ 
+  .inputCityR, .inputCityC{
+    width: 202%;
+  }
+ 
+  .inputNeighborhoodR, .inputNeighborhoodC{
+    width: 110%;
+  }
+ 
+  .inputComplementR, .inputComplementC{
+    width: 110%;
+    margin-left: 9%;
+  } 
+  .inputName{
+    width: 92%;
+  }
+ 
+  .inputRG{
+    width: 114%;
+  }
+  
+  .inputCPF{
+    width: 105%;
+    margin-left: -3%;
+  }
+ 
+  .textCPF{
+    margin-left: -3%;
+  }
+ 
+  .inputEmail{
+    width: 92%;
+  }
+
+  #btnSubmit{
+    color: 18638c;
+  }
+  
+// ******************************* TELEFONE *********************************
+
+.inputPhoneR, .inputPhoneCelular, .inputPhoneRecado{
+  width: 122%;
+}
+// ******************************* CONTAINER *********************************
+.container{
+  width: 1094px;
+}

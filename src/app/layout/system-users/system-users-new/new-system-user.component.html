@@ -1,0 +1,203 @@
+<script src="/script-mask.js"></script>
+<div>
+    <form novalidate ng-app="angularjs-starter" ng-controller="MainCtrl" role="form" [formGroup]="formNewUser" (ngSubmit)="onSubmit()">
+
+
+        <!-- 
+        <div id="divTeste">
+            <button type="button" class="btn {{classButtonEndR}}" id="btnBuscaCepR" title="Buscar CEP" (click)="teste()" #btnEndR>
+                <i id="iconBusca" class="fa" [class.fa-search]="btnEndR.className =='btn btn-primary'" [class.fa-times]="btnEndR.className =='btn btn-danger'"></i>
+            </button>
+
+        </div> -->
+        <div class="form-content">
+
+            <div class="card">
+                <div class="card-header">CADASTRO NOVO USUÁRIO
+
+                </div>
+                <div class="card-body">
+                    <div class="container">
+
+                        <div class="form-group">
+                            <!--  <span class="badge badge-primary">Nome Completo</span> -->
+                            <label for="name">Nome Completo</label>
+                            <input type="text" class="form-control input-underline input-sm inputName" [class.is-valid]="formNewUser.get('name').valid"
+                                [class.is-invalid]="formNewUser.get('name').touched && formNewUser.get('name').invalid" placeholder="Seu nome"
+                                formControlName="name">
+                            <small *ngIf="formNewUser.get('name').valid && formNewUser.get('name').touched" class="form-text text-success">Nome válido</small>
+                            <small *ngIf="!formNewUser.get('name').valid && formNewUser.get('name').touched" class="form-text text-danger">Nome inválido - Favor informar nome, sobrenome e não utilizar números ou caracteres especiais!
+                            </small>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name" class="textCPF">CPF</label>
+                                <input type="text" class="form-control input-underline input-sm" [class.is-valid]="formNewUser.get('cpf').valid" [class.is-invalid]="formNewUser.get('cpf').touched && formNewUser.get('cpf').invalid"
+                                    placeholder="000.000.000-00" formControlName="cpf" (blur)="validaAtributos('cpf')" [mask]="getMask('CPF')">
+                                <small *ngIf="formNewUser.get('cpf').valid && formNewUser.get('cpf').touched" class="form-text text-success">CPF válido</small>
+                                <small *ngIf="!formNewUser.get('cpf').valid && formNewUser.get('cpf').touched" class="form-text text-danger">CPF inválido - Favor informar CPF, e não utilizar letras ou caracteres especiais!
+                                </small>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name">RG</label>
+                                <input type="text" class="cpf form-control input-underline input-sm" [class.is-valid]="formNewUser.get('rg').valid" [class.is-invalid]="formNewUser.get('rg').touched && formNewUser.get('rg').invalid"
+                                    placeholder="00.000.000-0" formControlName="rg" >
+
+                                <small *ngIf="formNewUser.get('rg').valid && formNewUser.get('rg').touched" class="form-text text-success">RG válido</small>
+                                <small *ngIf="!formNewUser.get('rg').valid && formNewUser.get('rg').touched" class="form-text text-danger">RG inválido - Favor informar RG, e não utilizar caracteres especiais!</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control input-underline input-sm inputEmail" [class.is-valid]="formNewUser.get('email').valid"
+                                [class.is-invalid]="formNewUser.get('email').touched && formNewUser.get('email').invalid" placeholder="name@example.com"
+                                formControlName="email" (blur)="validaAtributos('email')">
+
+                            <small *ngIf="formNewUser.get('email').valid && formNewUser.get('email').touched" class="form-text text-success">E-mail válido</small>
+
+                            <small *ngIf="!formNewUser.get('email').valid && formNewUser.get('email').touched" class="form-text text-danger">E-mail inválido - Favor informar o e-mail!</small>
+                        </div>
+
+
+                    </div>
+                    <div class="container">
+                        <ngb-tabset id="tabs">
+                            <!-- **************************CEP************************** -->
+                            <ngb-tab title="Endereço Residencial">
+                                <ng-template ngbTabContent>
+                                    <br>
+                                    <div id="containerEndR">
+                                        <div class="form-group input-group">
+                                            <input type="text" class="form-control input-underline input-sm" placeholder="CEP" [mask]="getMask('CEP')" formControlName="zip_codeR">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn {{classButtonEndR}}" id="btnBuscaCepR" title="Buscar CEP" (click)="buscaCep('btnBuscaCepR')"
+                                                    #btnEndR>
+                                                    <i id="iconBusca" class="fa" [class.fa-search]="btnEndR.className =='btn btn-primary'" [class.fa-times]="btnEndR.className =='btn btn-danger'"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                        <div formGroupName="enderecoResidencial">
+                                            <!-- **************************LOGRADOURO E NUMERO************************** -->
+                                            <div class="form-row">
+                                                <div class="form-group col-md-8">
+                                                    <input type="text" class="form-control input-underline input-sm inputStreetR" [class.is-valid]="formNewUser.get('enderecoResidencial').get('streetR').valid"
+                                                        [class.is-invalid]="formNewUser.get('enderecoResidencial').get('streetR').touched && formNewUser.get('enderecoResidencial').get('streetR').invalid"
+                                                        placeholder="Logradouro" formControlName="streetR">
+                                                    <small *ngIf="formNewUser.get('enderecoResidencial').get('streetR').valid && formNewUser.get('enderecoResidencial').get('streetR').touched"
+                                                        class="form-text text-success">Logradouro válido</small>
+                                                    <small *ngIf="!formNewUser.get('enderecoResidencial').get('streetR').valid &&  formNewUser.get('enderecoResidencial').get('streetR').enabled && formNewUser.get('enderecoResidencial').get('streetR').touched"
+                                                        class="form-text text-danger">Logradouro Inválido - Por favor informar o logradouro, e não utilizar
+                                                        numeros ou caracteres especiais!</small>
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <input type="text" class="form-control input-underline input-sm inputNumberR" [class.is-valid]="formNewUser.get('enderecoResidencial').get('numberR').valid"
+                                                        [class.is-invalid]="formNewUser.get('enderecoResidencial').get('numberR').touched && formNewUser.get('enderecoResidencial').get('numberR').invalid"
+                                                        placeholder="Nº" formControlName="numberR">
+                                                    <small *ngIf="formNewUser.get('enderecoResidencial').get('numberR').valid && formNewUser.get('enderecoResidencial').get('numberR').touched"
+                                                        class="form-text text-success">Número válido</small>
+                                                    <small *ngIf="!formNewUser.get('enderecoResidencial').get('numberR').valid &&  formNewUser.get('enderecoResidencial').get('numberR').enabled && formNewUser.get('enderecoResidencial').get('numberR').touched"
+                                                        class="form-text text-danger">Número Inválido
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <!-- **************************BAIRRO E COMPLEMENTO************************** -->
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" class="form-control input-underline input-sm inputNeighborhoodR" [class.is-valid]="formNewUser.get('enderecoResidencial').get('neighborhoodR').valid"
+                                                        [class.is-invalid]="formNewUser.get('enderecoResidencial').get('neighborhoodR').touched && formNewUser.get('enderecoResidencial').get('neighborhoodR').invalid"
+                                                        placeholder="Bairro" ng-model="neighborhoodR" formControlName="neighborhoodR">
+                                                    <small *ngIf="formNewUser.get('enderecoResidencial').get('neighborhoodR').valid && formNewUser.get('enderecoResidencial').get('neighborhoodR').touched"
+                                                        class="form-text text-success">Bairro válido</small>
+                                                    <small *ngIf="!formNewUser.get('enderecoResidencial').get('neighborhoodR').valid &&  formNewUser.get('enderecoResidencial').get('neighborhoodR').enabled && formNewUser.get('enderecoResidencial').get('neighborhoodR').touched"
+                                                        class="form-text text-danger">Bairro Inválido - Por favor informar o bairro, e não utilizar numeros
+                                                        ou caracteres especiais!
+                                                    </small>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" class="form-control input-underline input-sm inputComplementR" placeholder="Complemento" ng-model="complementR"
+                                                        formControlName="complementR">
+                                                </div>
+                                            </div>
+
+                                            <!-- **************************CIDADE E ESTADO************************** -->
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" class="form-control input-underline input-sm inputCityR" placeholder="Cidade" ng-model="cityR" formControlName="cityR">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" class="form-control input-underline input-sm inputStateR" placeholder="Estado" ng-model="stateR" formControlName="stateR">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngb-tab>
+
+
+                            <ngb-tab title="Contatos">
+                                <ng-template ngbTabContent>
+                                    <br>
+
+                                    <div id="containerPhone">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6" id="divPhone">
+                                                <select class="custom-select select-phone" #selectPhone>
+                                                    <option value="INVALID" selected>Escolha um tipo</option>
+                                                    <option value="RESIDENCIAL">RESIDENCIAL</option>
+                                                    <option value="COMERCIAL">COMERCIAL</option>
+                                                    <option value="CELULAR">CELULAR</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <button type="button" class="btn btn-primary" id="btnAddPhoneToForm" (click)="addPhoneToForm(selectPhone.value)">Adicionar</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div id="divAdicionarTelefone">
+
+                                    </div>
+
+                                    <div *ngFor="let phone of phones" formGroupName="phones">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+
+                                                <input type="text" class="form-control input-underline input-sm" placeholder="Telefone" value="{{phone.type}}" readonly>
+
+                                            </div>
+                                            <div class="form-group col-md-8">
+                                                <div class="form-group input-group">
+                                                    <input type="text" class="form-control input-underline input-sm" placeholder="Telefone" id="input{{phone.name}}" formControlName="{{phone.name}}"
+                                                    [mask]="getMask(phone.type)">
+                                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-primary" id="button{{phone.name}}" (click)="removePhoneOfForm(phone)">
+                                                            <i id="iconBusca" class="fa fa-minus"></i>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </ng-template>
+                            </ngb-tab>
+                        </ngb-tabset>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-2" style="margin-top:10px">
+
+                    <button type="submit" title="Cadastrar Usuário" class="btn  btn-primary btn-block" [disabled]="(!formNewUser.valid)" id="btnSubmit">CADASTRAR</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

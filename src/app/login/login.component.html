@@ -1,0 +1,43 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img src="assets/images/logo_pmisa.png" width="150px" class="user-avatar" />
+            <h3>Ilha Conectada</h3>
+            <h4>Portal de Aplicativos</h4>
+
+            <form novalidade [formGroup]="loginForm" (ngSubmit)="userAuth()">
+                <div class="form-content">
+
+                    <div class="alert alert-danger" role="alert" *ngIf="errorAuth">
+                        Usuário e / ou Senha Incorretos!
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" ng-model="name" class="form-control input-underline input-sm" placeholder="E-mail" formControlName="email">
+                    </div>
+
+                    <small *ngIf="loginForm.get('email').valid && loginForm.get('email').touched" class="form-text text-success">e-mail válido</small>
+                    <small *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched" class="form-text text-danger">e-mail inválido</small>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-sm" placeholder="Senha" formControlName="password">
+                    </div>
+
+                    <small *ngIf="loginForm.get('password').valid && loginForm.get('password').touched" class="form-text text-success">senha válida</small>
+                    <small *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched" class="form-text text-danger">senha inválida - a senha precisar ter: uma letra maiúscula, uma letra minúscula, um número, uma caractere
+                        especial(@#$%) e tamanho entre 6-16.</small>
+
+                </div>
+                <a>
+                    <button type="submit" class="btn btn-primary btn-lg" [disabled]="!loginForm.valid"> Entrar </button>
+                </a>
+
+                &nbsp;
+                <a>
+                    <button type="button" class="btn btn-primary btn-lg" (click)="registerUser()"> Registrar </button>
+                </a>
+                <!-- <a class="btn btn-primary btn-lg" [routerLink]="['/signup']">Cadastrar</a> -->
+            </form>
+        </div>
+    </div>
+</div>
